@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<title>Gallery</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="gallery"></div>
+
+<script>
+fetch("images.json")
+  .then(res => res.json())
+  .then(images => {
+    const gallery = document.getElementById("gallery");
+
+    images.forEach(id => {
+      const view = `https://drive.google.com/uc?export=view&id=${id}`;
+      const download = `https://drive.google.com/uc?export=download&id=${id}`;
+
+      const div = document.createElement("div");
+      div.className = "card";
+
+      div.innerHTML = `
+        <img src="${view}" loading="lazy">
+        <a href="${download}" target="_blank">Download</a>
+      `;
+
+      gallery.appendChild(div);
+    });
+  });
+</script>
+
+</body>
+</html>
