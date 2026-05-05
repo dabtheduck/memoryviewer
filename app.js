@@ -1,20 +1,28 @@
 let images = [];
 let current = 0;
 
-/* LOAD JSON */
+/* ================= LOAD JSON ================= */
 fetch("images.json")
   .then(res => res.json())
   .then(data => {
     images = data;
-    showImage();
+
+    if (images.length > 0) {
+      showImage();
+      buildGallery(); // optional if you still want grid usage later
+    }
   });
 
+/* ================= LIGHTBOX (MAIN VIEW) ================= */
 function showImage() {
   const img = document.getElementById("mainImage");
 
-  img.src = `https://drive.google.com/uc?export=view&id=${images[current]}`;
+  const fullImage = `https://drive.google.com/uc?export=view&id=${images[current]}`;
+
+  img.src = fullImage;
 }
 
+/* ================= NAVIGATION ================= */
 function next() {
   current = (current + 1) % images.length;
   showImage();
@@ -25,7 +33,7 @@ function prev() {
   showImage();
 }
 
-/* DOWNLOAD CURRENT IMAGE */
+/* ================= DOWNLOAD CURRENT IMAGE ================= */
 function downloadCurrent() {
   const link = `https://drive.google.com/uc?export=download&id=${images[current]}`;
   window.open(link, "_blank");
