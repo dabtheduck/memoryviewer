@@ -17,7 +17,10 @@ fetch("images.json")
 function showImage() {
   const img = document.getElementById("mainImage");
 
+  const id = images[current]; // ✅ get correct image ID
+
   const fullImage = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+
   img.src = fullImage;
 }
 
