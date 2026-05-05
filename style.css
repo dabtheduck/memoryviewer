@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  background: #f5f5f5;
+  font-family: "Elms Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* ===== LANDSCAPE LAYOUT ===== */
+.page {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT */
+.info {
+  width: 25%;
+  padding: 40px;
+  background: white;
+}
+
+.meta {
+  color: gray;
+  font-size: 14px;
+}
+
+/* RIGHT */
+.viewer {
+  width: 75%;
+  position: relative;
+  padding: 20px;
+}
+
+/* LIGHTBOX BOX */
+.lightbox {
+  width: 100%;
+  height: 90%;
+  background: #000;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TOP BUTTONS */
+.viewer-topbar {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+.viewer-topbar button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+.nav button {
+  padding: 10px;
+  font-size: 20px;
+}
+
+#gallery {
+  column-count: 3;
+  column-gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
