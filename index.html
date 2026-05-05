@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<title>Memory Viewer</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+/* ===== LOCK SYSTEM ===== */
+.locked .page {
+  filter: blur(18px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* overlay */
+#lockScreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* hidden after unlock */
+#lockScreen.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+/* box */
+.lockBox {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+  width: 280px;
+}
+
+.lockBox input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+.lockBox button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+<body class="locked">
+
+<!-- 🔐 LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lockBox">
+    <h2>🔒 Enter Password</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <button onclick="unlock()">Unlock</button>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page">
+
+  <!-- LEFT -->
+  <div class="info">
+    <h1>Memory Viewer</h1>
+    <p class="meta">2026 • Photo Collection</p>
+    <p>Short description goes here.</p>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="viewer">
+
+    <div class="viewer-topbar">
+      <button onclick="downloadCurrent()">⬇</button>
+      <button onclick="location.href='gallery.html'">View All</button>
+    </div>
+
+    <div class="lightbox">
+      <img id="mainImage">
+    </div>
+
+    <div class="nav">
+      <button onclick="prev()">‹</button>
+      <button onclick="next()">›</button>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+<script>
+const PASSWORD = "1234"; // change this
+
+function unlock() {
+  const input = document.getElementById("passwordInput").value;
+
+  if (input === PASSWORD) {
+    document.body.classList.remove("locked");
+    document.getElementById("lockScreen").classList.add("hidden");
+  } else {
+    alert("Wrong password");
+  }
+}
+</script>
+
+</body>
+</html>
