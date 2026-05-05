@@ -17,8 +17,7 @@ fetch("images.json")
 function showImage() {
   const img = document.getElementById("mainImage");
 
-  const fullImage = `https://drive.google.com/uc?export=view&id=${images[current]}`;
-
+  const fullImage = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
   img.src = fullImage;
 }
 
