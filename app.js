@@ -16,10 +16,11 @@ fetch("images.json")
 /* ================= LIGHTBOX (MAIN VIEW) ================= */
 function showImage() {
   const img = document.getElementById("mainImage");
+  if (!img || !images.length) return;
 
-  const id = images[current]; // ✅ get correct image ID
+  const id = images[current];
 
-  const fullImage = `https://drive.google.com/thumbnail?id=${id}&sz=w1200`;
+  const fullImage = `https://drive.google.com/uc?export=view&id=${id}`;
 
   img.src = fullImage;
 }
